@@ -1,0 +1,62 @@
+@import url("style.css");
+
+main {
+    margin-top: 1rem;
+    display: flex;
+    align-items: start;
+}
+
+main aside {
+    flex: 3;
+    width: 100%;
+    margin: 0 1rem 1rem 0;
+    background-color: white;
+    border-radius: 10px;
+    height: 500px;
+}
+
+.products-section {
+    flex: 9;
+    width: 100%;
+    border-radius: 10px;
+}
+
+#search-input {
+    display: flex;
+    justify-content: center;
+}
+
+#search-input input {
+    width: 90%;
+    padding: 0.5rem;
+    font-size: 1.8rem;
+    border-radius: 10px 0 0 10px;
+    border: 2px solid var(--primary-color);
+}
+
+#input-icon {
+    width: 10%;
+    background: var(--primary-color);
+    border-radius: 0px 10px 10px 0px;
+    cursor: pointer;
+    transition: 500ms;
+}
+
+#input-icon i {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2rem;
+    transition: 500ms;
+}
+
+#input-icon:hover {
+    opacity: 0.9;
+}
+
+#input-icon:hover > i {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(0.90);
+}

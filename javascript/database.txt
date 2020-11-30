@@ -1,0 +1,13 @@
+users:
+ - id: string
+ - email: string
+ - password: string
+ - cart: [ productId ]
+ - products [ productId ]
+
+products:
+ - id: string
+ - title: string
+ - price: float
+ - imageUrl: string
+ - description: string

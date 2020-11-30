@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Store | add Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/add_product.css">
+
+    <script defer src="../javascript/models/user.js"></script>
+    <script defer src="../javascript/models/product.js"></script>
+    <script defer src="../javascript/services/auth_service.js"></script>
+    <script defer src="../javascript/services/store_service.js"></script>
+    <script defer src="../javascript/utils.js"></script>
+    <script defer src="../javascript/services/ui.js"></script>
+    <script defer src="../javascript/add_product.js"></script>
+</head>
+<body>
+    <!-- navbar -->
+    <div id="nav-placeholder"></div>
+
+    <!-- header -->
+    <header id="add-product-header" class="container title-header-with-hr">
+        <h1>Add Product</h1>
+        <hr>
+    </header>
+
+    <!-- add product form -->
+    <main id="add-product-main" class="container">
+        <form id="add-product-form">
+            <input id="title-input" class="normal-input" placeholder="Title*" type="text" required minlength="5">
+            <input id="price-input" class="normal-input" placeholder="Price*" required type="number">
+            <input id="image-url-input" class="normal-input grid-item-span" placeholder="Image URL*" type="text" required>
+            <textarea id="description-input" class="normal-textarea grid-item-span" placeholder="Description" type="text" required></textarea>
+            <div id="add-button-container" class="grid-item-span">
+                <button id="add-product-btn" class="btn btn-cta" type="submit" >Add Product</button>
+            </div>
+        </form>
+    </main>
+    
+</body>
+</html>
