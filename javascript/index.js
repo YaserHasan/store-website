@@ -23,7 +23,7 @@ function login() {
     const response = AuthService.login(email, password);
     console.log(response);
     if (response instanceof User)
-        window.location.replace(`http://127.0.0.1:5500/pages/store.html?id=${response.id}`);
+        window.location.replace(`../pages/store.html?id=${response.id}`);
     else
         showErrorAlert(response);
 }

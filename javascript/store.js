@@ -4,7 +4,7 @@ const productsList = document.querySelector('.products-list');
 
 
 // functions
-const user = Utils.getUserFromUrl();
+let user = Utils.getUserFromUrl();
 
 function buildNavBar() {
     document.querySelector('#nav-placeholder').replaceWith(UI.buildNavBar(user.id));
@@ -18,12 +18,24 @@ function getAndDrawAllProducts() {
     });
 }
 
+buildNavBar();
+getAndDrawAllProducts();
+
+function addProductToCart(e) {
+    const product = Utils.getProductFromEvent(e);
+    if (AuthService.isProductInUserCart(product.id, user)) {
+        alert('Product already in Cart!');
+    } else {
+        AuthService.addProductToUserCart(user.id, product.id);
+        user = Utils.getUserFromUrl();
+    }
+    
+}
 
 // event listeners
-document.addEventListener('DOMContentLoaded', e => {
-    buildNavBar();
-    getAndDrawAllProducts();
-});
+Utils.addEventToButtons('add-to-cart-btn', addProductToCart);
+
+
 
 
 

@@ -118,7 +118,7 @@ class AuthService {
 
     static removeProductfromUserCart(userId, productId) {
         const user = this.getUserById(userId);
-        user.cart.filter(prodId => prodId !== productId);
+        user.cart = user.cart.filter(prodId => prodId !== productId);
         let data = localStorage.getItem('users');
         if (data) {
             data = JSON.parse(data).data;
@@ -129,5 +129,10 @@ class AuthService {
             });
             localStorage.setItem('users', JSON.stringify( { data: data } ));
         }
+    }
+
+    static isProductInUserCart(productId, user) {
+        console.log(user.cart);
+        return user.cart.includes(productId);
     }
 }

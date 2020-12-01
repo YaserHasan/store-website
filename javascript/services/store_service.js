@@ -13,12 +13,34 @@ class StoreService {
         AuthService.addProductToUserProducts(user.id, product.id);
     }
 
+    static editProduct(product, user) {
+        let data;
+        const currentData = localStorage.getItem('products');
+        if (currentData) {
+            data = JSON.parse(currentData);
+            data.data.map(prod => {
+                if (prod.id === product.id) {
+                    prod.title = product.title;
+                    prod.price = product.price;
+                    prod.imageUrl = product.imageUrl;
+                    prod.description = product.description;
+                }
+                return prod;
+            });
+        } else {
+            data = {data: [ product.toJson() ]};
+        }
+
+        localStorage.setItem('products', JSON.stringify(data));
+        AuthService.addProductToUserProducts(user.id, product.id);
+    }
+
     static removeProduct(productId, user) {
         let data;
         const currentData = localStorage.getItem('products');
         if (currentData) {
             data = JSON.parse(currentData);
-            data.data = data.data.filter(prod => prod.id !== product.id);
+            data.data = data.data.filter(prod => prod.id !== productId);
             localStorage.setItem('products', JSON.stringify(data));
             AuthService.removeProductfromUserProducts(user.id, productId);
         }
@@ -32,6 +54,16 @@ class StoreService {
             return data;
         }
         return [];
+    }
+
+    static getProductById(productId) {
+        let data = localStorage.getItem('products');
+        if (data) {
+            data = JSON.parse(data).data;
+            const productJson = data.find(productData => productData.id === productId);
+            if (productJson)
+                return Product.fromJson(productJson);
+        }
     }
 
     static searchProducts(searchTerm) {

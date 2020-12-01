@@ -2,7 +2,7 @@ class Product {
     constructor(id = Utils.generateId(), title, price, imageUrl, description) {
         this.id = id;
         this.title = title;
-        this.price = price;
+        this.price = Number(price);
         this.imageUrl = imageUrl;
         this.description = description;
     }

@@ -34,6 +34,7 @@ class UI {
       <div class="product-details">
         <img src="${product.imageUrl}" alt="${product.title}">
         <h2>${product.title}</h2>
+        <p id="product-id" style="display: none;">${product.id}</p>
       </div>
       <div class="product-actions">
         <h3>${product.price}&#8362;</h3>

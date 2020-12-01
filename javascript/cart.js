@@ -6,7 +6,7 @@ const total = document.querySelector('#total');
 
 
 // functions
-const user = Utils.getUserFromUrl();
+let user = Utils.getUserFromUrl();
 let userCart = StoreService.getUserCart(user.cart);
 
 function buildNavBar() {
@@ -21,7 +21,10 @@ function DrawUserCartProducts() {
 
 // get the prices
 function getPrices(refresh = false) {
-    if (refresh) userCart = StoreService.getUserCart(user.cart);
+    if (refresh) {
+        user = Utils.getUserFromUrl();
+        userCart = StoreService.getUserCart(user.cart);
+    }
     let productsCost = 0;
     userCart.forEach(product => {
         productsCost += product.price;
@@ -31,16 +34,17 @@ function getPrices(refresh = false) {
     total.textContent = Math.floor(((productsCost * 0.17) + productsCost));
 }
 
+buildNavBar();
+DrawUserCartProducts();
+getPrices();
+
+function removeProductFromCart(e) {
+    const product = Utils.getProductFromEvent(e);
+    AuthService.removeProductfromUserCart(user.id, product.id);
+    Utils.removeProductFromUI(e);
+    getPrices(true);
+}
 
 
 // event listeners
-document.addEventListener('DOMContentLoaded', e => {
-    buildNavBar();
-    DrawUserCartProducts();
-    getPrices();
-});
-
-document.querySelectorAll('#remove-from-cart-btn').forEach(btn => btn.addEventListener('click', e => {
-    removeProductFromCart(e);
-    getPrices(true);
-}));
+Utils.addEventToButtons('remove-from-cart-btn', removeProductFromCart);
