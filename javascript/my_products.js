@@ -31,13 +31,13 @@ function removeProduct(e) {
 }
 
 function editProduct(e) {
-    window.location.assign(`../pages/add_product.html?id=${user.id}&prodId=${Utils.getProductFromEvent(e).id}`);
+    window.location.assign(`./add_product.html?id=${user.id}&prodId=${Utils.getProductFromEvent(e).id}`);
 }
 
 
 // event listeners
 addProductButton.addEventListener('click', e => {
-    window.location.href = (`../pages/add_product.html?id=${user.id}`);
+    window.location.href = (`./add_product.html?id=${user.id}`);
 });
 Utils.addEventToButtons('edit-product-btn', editProduct);
 Utils.addEventToButtons('remove-from-my-products-btn', removeProduct);

@@ -19,7 +19,7 @@ function buildNavBar() {
 function addProduct() {
     const product = new Product(undefined, titleInput.value, priceInput.value,  imageUrlInput.value, descriptionInput.value);
     StoreService.addProduct(product, user);
-    window.location.replace(`../pages/my_products.html?id=${user.id}`);
+    window.location.replace(`./my_products.html?id=${user.id}`);
 }
 
 function populateInputsWithCurrentProduct() {
@@ -32,7 +32,7 @@ function populateInputsWithCurrentProduct() {
 function editProduct() {
     const editiedProduct = new Product(currentProduct.id, titleInput.value, priceInput.value,  imageUrlInput.value, descriptionInput.value);
     StoreService.editProduct(editiedProduct, user);
-    window.location.replace(`../pages/my_products.html?id=${user.id}`);
+    window.location.replace(`./my_products.html?id=${user.id}`);
 }
 
 

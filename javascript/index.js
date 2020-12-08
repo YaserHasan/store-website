@@ -23,7 +23,7 @@ function login() {
     const response = AuthService.login(email, password);
     console.log(response);
     if (response instanceof User)
-        window.location.replace(`../pages/store.html?id=${response.id}`);
+        window.location.replace(`./pages/store.html?id=${response.id}`);
     else
         showErrorAlert(response);
 }
